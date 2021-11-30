@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#
+# https://zzamboni.org/brt/2008/01/21/how-to-emulate-unix-getent-with-macosxs-dscl/
+# credits to https://intensedebate.com/people/yvov
+#
+
+if [ -z $1 ];
+then
+echo "You must specify an user"
+exit 1
+else
+echo `dscl . -read /Users/$1 RecordName | sed 's/RecordName: //g'`:*:`dscl . -read /Users/$1 UniqueID | sed 's/UniqueID: //g'`:`dscl . -read /Users/$1 PrimaryGroupID | sed 's/PrimaryGroupID: //g'`:`dscl . -read /Users/$1 RealName | sed -e 's/RealName://g' -e 's/^ //g' | awk '{printf("%s", $0 (NR==1 ? "" : ""))}'`:/Users/$1:`dscl . -read /Users/$1 UserShell | sed 's/UserShell: //g'`
+fi
+
+exit 0

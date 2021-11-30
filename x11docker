@@ -11,7 +11,23 @@
 # Run 'x11docker --help' or scroll down to read usage information.
 # More documentation at:  https://github.com/mviereck/x11docker
 
-Version="7.1.5-beta-8"
+Version="7.1.5-beta-8-osx"
+
+[ $(uname) == Darwin ] && {
+
+cat << EOT
+
+  x11docker does not work yet on Darwin
+  if you want to test/contribute,
+  please read README-OSX.txt
+
+EOT
+	
+exit 0
+
+}
+
+>>>>>>> 40912f2... Darwin (Monterey)
 
 # --enforce-i: Enforce running in interactive mode to allow commands tty and weston-launch in special setups.
 grep -q -- "--enforce-i" <<< "$*" && case $- in
