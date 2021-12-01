@@ -27,9 +27,12 @@ brew install coreutils
 
 karawitan$ ./x11docker
 ./x11docker: line 6676: ip: command not found
-./x11docker: line 6677: ip: command not found
-./x11docker: line 6678: ip: command not found
-./x11docker: line 6679: ip: command not found
+
+There is no docker0 bridge on macOS
+Because of the way networking is implemented in Docker Desktop for Mac, 
+you cannot see a docker0 interface on the host. 
+This interface is actually within the virtual machine.
+
 
 stat: illegal option -- c
 usage: stat [-FlLnqrsx] [-f format] [-t timefmt] [file ...]
