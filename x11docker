@@ -25,7 +25,8 @@ cat << EOT
 
 EOT
 	
-exit 0
+sleep 1
+#exit 0
 
 }
 
