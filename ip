@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# 
+# Emulate Linux /sbin/ip -4 -o a 
+# on Linux, grep for docker0 (from host)
+# on Darwin, grep for eth0 (from container)
+#
+
+[ $(uname) == Darwin ] && {
+	docker run alpine:latest "ip" "-4" "-o" "a" | grep eth0
+}

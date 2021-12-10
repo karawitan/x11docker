@@ -1,5 +1,7 @@
 #! /usr/bin/env bash
 
+set -e
+
 # x11docker
 # Run GUI applications and desktop environments in Docker containers.
 #
@@ -26,8 +28,6 @@ EOT
 exit 0
 
 }
-
->>>>>>> 40912f2... Darwin (Monterey)
 
 # --enforce-i: Enforce running in interactive mode to allow commands tty and weston-launch in special setups.
 grep -q -- "--enforce-i" <<< "$*" && case $- in
@@ -7844,10 +7844,10 @@ check_host() {                  # check host environment
         host) Hostip="127.0.0.1" ;;
         *)
           #Hostip="$(hostname -I | cut -d' ' -f1)"
-          [ "$Hostip" ] || Hostip="$(ip -4 -o a |                  awk '{print $4}' | cut -d/ -f1 | grep    "^192\.168\.*" | head -n1)"
-          [ "$Hostip" ] || Hostip="$(ip -4 -o a | grep 'docker0' | awk '{print $4}' | cut -d/ -f1 | grep    "172.17.0.1" ||: )"
-          [ "$Hostip" ] || Hostip="$(ip -4 -o a | grep 'docker0' | awk '{print $4}' | cut -d/ -f1 | head -n1)"
-          [ "$Hostip" ] || Hostip="$(ip -4 -o a |                  awk '{print $4}' | cut -d/ -f1 | grep -v "127.0.0.1" | head -n1)"
+          [ "$Hostip" ] || Hostip="$(./ip -4 -o a |                  awk '{print $4}' | cut -d/ -f1 | grep    "^192\.168\.*" | head -n1)" 
+          [ "$Hostip" ] || Hostip="$(./ip -4 -o a | grep 'docker0' | awk '{print $4}' | cut -d/ -f1 | grep    "172.17.0.1" ||: )"
+          [ "$Hostip" ] || Hostip="$(./ip -4 -o a | grep 'docker0' | awk '{print $4}' | cut -d/ -f1 | head -n1)"
+          [ "$Hostip" ] || Hostip="$(./ip -4 -o a |                  awk '{print $4}' | cut -d/ -f1 | grep -v "127.0.0.1" | head -n1)" 
         ;;
       esac
     ;;
