@@ -7,18 +7,19 @@ https://github.com/mviereck/x11docker/issues/15
 https://github.com/mviereck/x11docker/issues/242
 https://github.com/mviereck/x11docker/issues/269
 
-*******
- Fixed
-*******
 
-# switch to a modern bash, as Apple does not include GPLv3 code in their deliveries
+#
+# Install the pre-requisite, either using "Homebrew or MacPorts"
+#
+
+# 'realpath' 		( included in GNU coreutils )
+# bash 4.x or more 	( Apple does not ship GPLv3 components )
+
+brew install coreutils bash
+port install coreutils bash
+
 brew install bash 
 export PATH=/opt/homebrew/bin:$PATH
-
-# coreutils provides 'realpath'
-brew install coreutils
-
-
 
 
 *******************
